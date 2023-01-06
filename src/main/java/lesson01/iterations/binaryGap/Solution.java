@@ -6,23 +6,22 @@ public class Solution {
 
         int longestBinaryGap = 0;
 
-        int tempBinaryGap = 0;
+        if(N > 1) {
 
-        char[] binaryCharArray = Integer.toBinaryString(N).toCharArray();
+            int tempBinaryGap = 0;
 
-        if(N == 1) {
-            return 0;
-        }
+            char[] binaryCharArray = Integer.toBinaryString(N).toCharArray();
 
-        for (char c : binaryCharArray) {
+            for (char c : binaryCharArray) {
 
-            if (c == '0') {
-                tempBinaryGap++;
-            } else if (c == '1') {
-                if (longestBinaryGap < tempBinaryGap) {
-                    longestBinaryGap = tempBinaryGap;
+                if (c == '0') {
+                    tempBinaryGap++;
+                } else if (c == '1') {
+                    if (longestBinaryGap < tempBinaryGap) {
+                        longestBinaryGap = tempBinaryGap;
+                    }
+                    tempBinaryGap = 0;
                 }
-                tempBinaryGap = 0;
             }
         }
 

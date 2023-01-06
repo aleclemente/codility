@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SolutionTest {
 
     @Test
-    void givenASequenceIntegerThenPrintTheBinaryStringRepresentation() {
+    void givenAnIntegerThenPrintTheBinaryStringSequenceRepresentation() {
 
         int N = 10;
 
