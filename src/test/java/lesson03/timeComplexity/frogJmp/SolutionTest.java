@@ -8,8 +8,6 @@ class SolutionTest {
 
     Solution solution = new Solution();
 
-
-
     @Test
     void whenXAndYIgual() {
 
