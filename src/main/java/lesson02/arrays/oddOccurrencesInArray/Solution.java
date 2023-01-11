@@ -9,9 +9,12 @@ class Solution {
 
         Arrays.sort(A);
 
+        int lastIndex = A.length-1;
+
+        if(A[lastIndex-1] != A[lastIndex]) return A[lastIndex];
+
         int oddOccurrenceIndex = 0;
         int nextIndex = 1;
-        int lastIndex = A.length-1;
         boolean foundIndex = false;
 
         while(!foundIndex){
