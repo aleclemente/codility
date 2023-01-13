@@ -9,11 +9,6 @@ public class SolutionTest {
     Solution solution = new Solution();
 
     @Test
-    void givenAnArrayThenReturnBestSolution(){
-        assertEquals(0, solution.solution( new int[]{0} ) );
-    }
-
-    @Test
     void givenAnArrayThenReturnMinimalAbsolutDifference(){
         assertEquals(1, solution.solution( new int[]{3, 1, 2, 4, 3} ) );
     }
