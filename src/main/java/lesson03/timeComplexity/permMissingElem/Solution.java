@@ -5,30 +5,22 @@ import java.util.Arrays;
 class Solution {
     public int solution(int[] A) {
 
-        Arrays.sort(A);
-
-        int searchIndex = 0;
-        int nextIndex = 1;
-        int penultIndex = A.length-2;
-        int lastIndex = A.length-1;
-        boolean indexFound = false;
-
-        if(A.length == 1 || A[searchIndex]+1 != A[nextIndex]) {
-            indexFound = true;
-        } else if(A[penultIndex]+1 != A[lastIndex]) {
-            searchIndex = penultIndex;
-            indexFound = true;
+        if(A.length == 0) {
+            return 1;
         }
 
-        while(!indexFound) {
-            if(A[searchIndex]+1 != A[nextIndex] || nextIndex+1 == lastIndex) {
-                indexFound = true;
-            } else {
-                searchIndex++;
-                nextIndex++;
+        Arrays.sort(A);
+
+        if(A[A.length-1] == A.length) {
+            return A.length+1;
+        }
+
+        for(int i=0; i < A.length; i++) {
+            if(A[i] != i+1){
+                return i+1;
             }
         }
 
-        return A[searchIndex]+1;
+        return 0;
     }
 }

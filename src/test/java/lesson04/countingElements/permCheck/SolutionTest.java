@@ -11,18 +11,14 @@ public class SolutionTest {
     @Test
     void givenAnNotPermutableArrayThenReturnMinusOne(){
 
-        int[] A = {4, 1, 3};
-
-        assertEquals(0, solution.solution(A));
+        assertEquals(0, solution.solution(new int[] {4, 1, 3}) );
 
     }
 
     @Test
     void givenAnPermutableArrayThenReturnOne(){
 
-        int[] A = {4, 1, 3, 2};
-
-        assertEquals(1, solution.solution(A));
+        assertEquals(1, solution.solution( new int[] {4, 1, 3, 2}) );
 
     }
 }
