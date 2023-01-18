@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SolutionTest {
-    Solution solution = new Solution();
+    Solution_OLD solution = new Solution_OLD();
 
     @Test
     void givenStringWithOneClosedBracketThenReturnZero(){

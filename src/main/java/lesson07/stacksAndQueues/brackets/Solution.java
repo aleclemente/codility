@@ -5,44 +5,40 @@ import java.util.Stack;
 class Solution {
     public int solution(String S){
 
-        char[] charArray = S.toCharArray();
+        char[] chars = S.toCharArray();
 
-        int properlyNested = 1;
-
-        if(charArray.length == 0) {
-            return properlyNested;
+        if(chars.length == 0) {
+            return 1;
         }
 
-        if(charArray.length % 2 != 0) {
-            properlyNested = 0;
-            return properlyNested;
+        if(chars.length % 2 != 0) {
+            return 0;
         }
 
-        Stack<Character> stackBrackets = new Stack<Character> ();
+        Stack<Character> brackets = new Stack<Character> ();
 
-        stackBrackets.push(charArray[0]);
+        for(char c : chars){
 
-        for(int i=1; i < charArray.length; i++){
-
-            if( ( stackBrackets.empty() && ( charArray[i] == '}' || charArray[i] == ')' || charArray[i] == ']' ) )
-                    || ( !stackBrackets.empty() && stackBrackets.peek() == '{' && ( charArray[i] == ')' || charArray[i] == ']' ) )
-                    || ( !stackBrackets.empty() && stackBrackets.peek() == '[' && ( charArray[i] == '}' || charArray[i] == ')' ) )
-                    || ( !stackBrackets.empty() && stackBrackets.peek() == '(' && ( charArray[i] == '}' || charArray[i] == ']' ) ) ) {
-                properlyNested = 0;
-                return properlyNested;
-            } else if( !stackBrackets.empty() && ( ( stackBrackets.peek() == '{' && charArray[i] == '}' )
-                        || ( stackBrackets.peek() == '[' && charArray[i] == ']' )
-                        || ( stackBrackets.peek() == '(' && charArray[i] == ')' ) ) ) {
-                stackBrackets.pop();
+            if(brackets.empty()) {
+                if(c == '}' || c == ')' || c == ']') {
+                    return 0;
+                } else {
+                    brackets.push(c);
+                }
             } else {
-                stackBrackets.push(charArray[i]);
+                if(validateDoubleNestedBrackets(brackets.peek(), c)) {
+                    brackets.pop();
+                } else {
+                    brackets.push(c);
+                }
             }
+
         }
 
-        if(!stackBrackets.empty()) {
-            properlyNested = 0;
-        }
+       return brackets.empty() ? 1 : 0;
+    }
 
-        return properlyNested;
+    private boolean validateDoubleNestedBrackets(char openChar, char closeChar) {
+        return (openChar == '{' && closeChar == '}') || (openChar == '[' && closeChar == ']') || (openChar == '(' && closeChar == ')') ? true : false;
     }
 }
