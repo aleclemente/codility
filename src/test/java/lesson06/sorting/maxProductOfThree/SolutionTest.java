@@ -8,7 +8,12 @@ public class SolutionTest {
     Solution solution = new Solution();
 
     @Test
-    void givenAnArrayOfThreeThenReturnProductOfThree(){
+    void givenAnArrayWithSomeNegativesThenReturnProductOfThree(){
+        assertEquals(125, solution.solution(new int[] {-5, 5, -5, 4}));
+    }
+
+    @Test
+    void givenAnArrayThenReturnMacimalProductOfThree(){
         assertEquals(60, solution.solution(new int[] {-3, 1, 2, -2, 5, 6}));
     }
 }
