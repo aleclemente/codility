@@ -8,18 +8,42 @@ class Solution {
 
         Stack<Integer> stack = new Stack<>();
 
+        int candidateIndex = -1;
+        int leaderIndex = -1;
+
         if(A.length == 0) {
-            return -1;
+            return leaderIndex;
         }
 
         for(int i=0; i < A.length; i++){
-            if(stack.empty() || A[stack.peek()] == A[i]){
+            if( stack.empty()) {
                 stack.push(i);
             } else {
-                stack.pop();
+                if (A[stack.peek()] != A[i]) {
+                    stack.pop();
+                } else {
+                    stack.push(i);
+                }
             }
         }
 
-       return stack.empty() ? -1 : stack.peek();
+        if(stack.size() > 0){
+            candidateIndex = stack.peek();
+        } else {
+            return leaderIndex;
+        }
+
+        int count = 0;
+        for(int i=0; i < A.length; i++){
+            if(A[i] == A[candidateIndex]) {
+                count++;
+            }
+        }
+
+        if(count > (A.length / 2) ){
+            leaderIndex = candidateIndex;
+        }
+
+       return leaderIndex;
     }
 }
