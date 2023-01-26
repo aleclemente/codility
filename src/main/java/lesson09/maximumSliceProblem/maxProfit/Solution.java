@@ -4,6 +4,7 @@ import static java.lang.Math.max;
 
 class Solution {
     public int solution(int[] A){
+
         int maxProfit = 0;
 
         if(A.length < 2){
@@ -11,15 +12,18 @@ class Solution {
         }
 
         int maxEnding = 0;
-        int maxSlice = 0;
 
         for(int i=0; i < A.length; i++){
             for(int j=i+1; j < A.length; j++) {
                 maxEnding = max(maxEnding, A[j] - A[i]);
-                maxSlice = max(maxEnding, maxSlice);
+                maxProfit = max(maxEnding, maxProfit);
             }
         }
 
-        return maxSlice;
+        if(maxProfit > 0) {
+            return maxProfit;
+        }
+
+        return 0;
     }
 }
