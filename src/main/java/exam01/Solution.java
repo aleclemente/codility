@@ -1,20 +1,22 @@
 package exam01;
 
+import java.math.BigInteger;
+
 class Solution {
-    public int solution(String binary){
+    public int solution(String S){
 
-        int decimalNumber = Integer.parseInt(binary, 2);
-        int countSteps = 0;
+        BigInteger decimalNumber = new BigInteger(S, 2);
+        int steps = 0;
 
-        while( decimalNumber > 0 ){
-            countSteps++;
-            if(decimalNumber % 2 == 0) {
-                decimalNumber = decimalNumber / 2;
+        while( decimalNumber.compareTo(BigInteger.ZERO) == 1 ){
+            steps++;
+            if(decimalNumber.mod(BigInteger.TWO) == BigInteger.ZERO) {
+                decimalNumber = decimalNumber.divide(BigInteger.TWO);
             } else {
-                decimalNumber--;
+                decimalNumber = decimalNumber.subtract(BigInteger.ONE);
             }
         }
 
-        return countSteps;
+        return steps;
     }
 }
