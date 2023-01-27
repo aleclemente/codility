@@ -43,4 +43,18 @@ class SolutionTest {
 
         Assertions.assertArrayEquals(expected, result);
     }
+
+    @Test
+    void givenArrayAAndIntegerKThenReturnArrayARotatedKTimesEfficient(){
+
+        int[] A = {3, 8, 9, 7, 6};
+
+        int K = 12;
+
+        int[] expected = {7, 6, 3, 8, 9};
+
+        int[] result = new Solution().solution(A, K);
+
+        Assertions.assertArrayEquals(expected, result);
+    }
 }
