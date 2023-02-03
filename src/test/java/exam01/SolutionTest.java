@@ -8,8 +8,13 @@ public class SolutionTest {
     Solution solution = new Solution();
 
     @Test
-    void givenABinaryNumberZeroThenConvertToDecimalAndReturnZeroSteps(){
+    void givenABinaryNumberZeroThenConvertToDecimalAndReturnZeroStep(){
         assertEquals(0, solution.solution( new String("0")) );
+    }
+
+    @Test
+    void givenABinaryNumberOneThenConvertToDecimalAndReturnOneStep(){
+        assertEquals(1, solution.solution( new String("1")) );
     }
 
     @Test

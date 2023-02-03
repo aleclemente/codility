@@ -1,39 +1,51 @@
 package exam01;
 
-import java.math.BigInteger;
-import java.util.*;
-
 class Solution {
     public int solution(String S){
 
         char[] binary = S.toCharArray();
 
-        int steps = 0;
-
-        int index = binary.length-1;
-
-        while( index > -1 ){
-
-            steps++;
-
-            if(index-1 == 0 && binary[index-1] == '0' ) {
-                return steps;
-            }
-
-            if( binary[index] == '0' ) {
-                index--;
+        if(binary.length == 1){
+            if(binary[0] == '0') {
+                return 0;
             } else {
-                binary[index] = '0';
+                return 1;
             }
         }
 
-        return steps-1;
+        int steps = -1;
+
+        for(int i = 0; i < binary.length; i++){
+            if( binary[i] == '1'){
+                steps = steps + 2;
+            } else if ( binary[i] == '0' && steps > 0){
+                steps = steps + 1;
+            }
+        }
+
+        return steps;
     }
 }
 
+/*
+Recebe um número binário transforma em decimal e verifica se esse é par, caso positivo divida por dois, caso seja impar subtrai por um.
+Conte quando passos foram necessários
 
+Por exemplo:
+011100 = 28
+Número par, divide por 2 = 14
+Número par, divide por 2 = 7
+Número impar, subtrai 1 = 6
+Número par, divide por 2 = 3
+Número impar, subtrai 1 = 2
+Número par, divide por 2 = 1
+Número impar, subtrai 1 = 0
+
+Resposta: 7 Passos
+ */
 
 /*
+Solution using BigInteger low performance
 import java.math.BigInteger;
 
 class Solution {
@@ -56,19 +68,3 @@ class Solution {
     }
 }
 */
-/*
-Recebe um número binário transforma em decimal e verifica se esse é par, caso positivo divida por dois, caso seja impar subtrai por um.
-Conte quando passos foram necessários
-
-Por exemplo:
-011100 = 28
-Número par, divide por 2 = 14
-Número par, divide por 2 = 7
-Número impar, subtrai 1 = 6
-Número par, divide por 2 = 3
-Número impar, subtrai 1 = 2
-Número par, divide por 2 = 1
-Número impar, subtrai 1 = 0
-
-Resposta: 7 Passos
- */
