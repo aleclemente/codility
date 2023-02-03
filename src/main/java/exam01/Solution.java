@@ -1,11 +1,46 @@
 package exam01;
 
 import java.math.BigInteger;
+import java.util.*;
+
+class Solution {
+    public int solution(String S){
+
+        char[] binary = S.toCharArray();
+
+        int steps = 0;
+
+        int index = binary.length-1;
+
+        while( index > -1 ){
+
+            steps++;
+
+            if(index-1 == 0 && binary[index-1] == '0' ) {
+                return steps;
+            }
+
+            if( binary[index] == '0' ) {
+                index--;
+            } else {
+                binary[index] = '0';
+            }
+        }
+
+        return steps-1;
+    }
+}
+
+
+
+/*
+import java.math.BigInteger;
 
 class Solution {
     public int solution(String S){
 
         BigInteger decimalNumber = new BigInteger(S, 2);
+
         int steps = 0;
 
         while( decimalNumber.compareTo(BigInteger.ZERO) == 1 ){
@@ -20,6 +55,7 @@ class Solution {
         return steps;
     }
 }
+*/
 /*
 Recebe um número binário transforma em decimal e verifica se esse é par, caso positivo divida por dois, caso seja impar subtrai por um.
 Conte quando passos foram necessários

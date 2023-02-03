@@ -24,6 +24,11 @@ public class SolutionTest {
     }
 
     @Test
+    void givenABinaryNumberThenConvertToDecimalAndReturnTwentyTwoSteps(){
+        assertEquals(22, solution.solution( new String("1111010101111")) );
+    }
+
+    @Test
     void givenAHugeBinaryNumberThenConvertToDecimalAndReturnSevenHugeSteps(){
         String hugeBinary = "1".repeat(400000);
         assertEquals(799999, solution.solution( new String(hugeBinary)) );
